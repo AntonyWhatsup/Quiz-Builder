@@ -13,6 +13,7 @@ interface QuestionDraft {
 export default function CreateQuizPage() {
   const [title, setTitle] = useState('');
   const [questions, setQuestions] = useState<QuestionDraft[]>([{ text: '', type: 'INPUT', options: [] }]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const addQuestion = () => {
@@ -31,23 +32,30 @@ export default function CreateQuizPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!title) {
       alert('Please enter a quiz title');
       return;
     }
 
-    const res = await fetch('http://localhost:4000/quizzes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, questions }),
-    });
+    setLoading(true);
+    try {
+      const res = await fetch('http://localhost:4000/quizzes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, questions }),
+      });
 
-    if (res.ok) {
-      alert('Quiz saved successfully!');
-      router.push('/quizzes');
-    } else {
-      alert('Error: Could not save the quiz');
+      if (res.ok) {
+        alert('Quiz saved successfully!');
+        router.push('/quizzes');
+      } else {
+        throw new Error('Failed to save');
+      }
+    } catch (error) {
+      alert('Error: Could not save the quiz. Make sure the backend is running.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -120,11 +128,12 @@ export default function CreateQuizPage() {
           + Add Question
         </button>
 
-        <button 
-          type="submit" 
-          className="w-full bg-green-600 text-white p-3 rounded font-bold hover:bg-green-700"
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-green-600 text-white p-3 rounded font-bold hover:bg-green-700 disabled:bg-gray-400"
         >
-          Save Quiz Now
+          {loading ? 'Saving...' : 'Save Quiz Now'}
         </button>
       </form>
     </div>

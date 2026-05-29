@@ -10,13 +10,13 @@ app.use(express.json());
 
 interface QuestionInput {
   text: string;
-  type: string;
+  type: 'BOOLEAN' | 'INPUT' | 'CHECKBOX';
   options?: string[];
 }
 
-// Simple check to see if the server is working
+// Health check route
 app.get('/', (req, res) => {
-  res.send('Welcome to Quiz Builder API! Use /quizzes to see all quizzes.');
+  res.json({ message: 'Quiz Builder API is active', version: '1.0.0' });
 });
 
 // POST /quizzes – Create a new quiz
@@ -30,14 +30,14 @@ app.post('/quizzes', async (req, res) => {
           create: questions.map((q) => ({
             text: q.text,
             type: q.type,
-            options: q.options && q.options.length > 0 ? JSON.stringify(q.options) : null,
+            options: q.type === 'CHECKBOX' && q.options ? JSON.stringify(q.options) : null,
           })),
         },
       },
       include: { questions: true },
     });
     res.status(201).json(quiz);
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ error: 'Failed to create quiz' });
   }
 });
