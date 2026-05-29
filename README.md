@@ -278,8 +278,6 @@ npm run dev  # or use a process manager like PM2
 
 ---
 
-**Happy quizzing! **
-
 Notes
 
 - Backend runs on `http://localhost:4000` by default.
