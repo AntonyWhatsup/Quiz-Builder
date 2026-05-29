@@ -1,1 +1,11 @@
-This task is to implement a Quiz Builder web application where users can create custom quizzes with various types of questions. The application consists of a Backend (Node.js) and Frontend (React). Users should be able to build quizzes, view all available quizzes, and view any single quiz in detail.
+# Quiz Builder
+
+A full-stack application for creating and managing custom quizzes.
+
+## Project Structure
+
+- **backend/**: Express.js server with Prisma and SQLite.
+  - `src/`: Server source code.
+  - `prisma/`: Database schema and migrations.
+- **frontend/**: Next.js React application.
+  - `src/app/`: App router pages and logic.
