@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#0f172a10; /* subtle */
+  --surface:#ffffff;
+  --muted:#6b7280;
+  --accent-500:#2563eb;
+  --accent-600:#7c3aed;
+  --card-shadow: 0 8px 24px rgba(15,23,42,0.06);
+}
+
+/* Reset / layout */
+html,body,#__next{height:100%;}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f8fafc,#eef2ff);margin:0;color:#0f172a}
+.max-w-3xl{max-width:48rem;margin-left:auto;margin-right:auto}
+.p-6{padding:1.5rem}
+.p-4{padding:1rem}
+.mb-4{margin-bottom:1rem}
+.mb-6{margin-bottom:1.5rem}
+
+/* Cards and layout */
+.card{background:var(--surface);border-radius:12px;padding:18px;box-shadow:var(--card-shadow)}
+.list-item{transition:transform .15s ease, box-shadow .15s ease;border-radius:12px}
+.list-item:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(15,23,42,0.08)}
+
+/* Typography */
+.title{font-weight:700;color:#0f172a}
+.muted{color:var(--muted)}
+.small{font-size:0.875rem}
+
+/* Buttons */
+.button{background:linear-gradient(90deg,var(--accent-500),var(--accent-600));color:white;padding:0.6rem 1.05rem;border-radius:10px;border:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.button:active{transform:translateY(1px)}
+.button.secondary{background:transparent;color:var(--accent-600);border:1px solid rgba(124,58,237,0.12)}
+
+/* Inputs */
+input[type="text"], textarea, select{border:1px solid #e6edf3;padding:10px;border-radius:8px;width:100%;box-sizing:border-box}
+input:focus, textarea:focus, select:focus{outline:none;box-shadow:0 0 0 4px rgba(37,99,235,0.08);border-color:var(--accent-500)}
+
+/* Helpers */
+.muted-text{color:var(--muted)}
+.card-list{display:grid;grid-template-columns:1fr;gap:1rem}
+
+@media(min-width:768px){
+  .card-list{grid-template-columns:1fr}
+}
+
+/* Links */
+a.title-link{color:#0f172a;text-decoration:none}
+
+
