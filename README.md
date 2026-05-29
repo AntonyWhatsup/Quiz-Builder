@@ -235,8 +235,6 @@ If `localhost:4000` or `localhost:3000` is busy, kill the process:
 # Windows PowerShell
 Get-Process node | Stop-Process -Force
 
-# macOS/Linux
-pkill -f node
 ```
 
 ### **Prisma Sync Issues**
@@ -280,13 +278,7 @@ npm run dev  # or use a process manager like PM2
 
 ---
 
-## **Author**
-
-Full-stack quiz builder implementation.
-
----
-
-**Happy quizzing! 🎓✨**
+**Happy quizzing! **
 
 Notes
 
@@ -294,9 +286,4 @@ Notes
 - Frontend talks to backend at `http://localhost:4000` (hard-coded for simplicity).
 - Use `.env` to override `DATABASE_URL` if needed (see `.env.example`).
 
-What I changed to keep things simple
-
-- Kept API implementation minimal and explicit (no fancy abstractions).
-- Frontend uses basic `fetch` + React hooks, no heavy form libraries.
-- Added ESLint + Prettier config and simple seed script.
 
